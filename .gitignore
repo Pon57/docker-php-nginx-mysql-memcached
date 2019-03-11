@@ -9,3 +9,6 @@ docker/misc/data
 
 # phpmyadminのセッションディレクトリ
 docker/misc/phpmyadmin/sessions/
+
+# ドキュメントルートのディレクトリ
+public/
