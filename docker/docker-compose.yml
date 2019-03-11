@@ -24,6 +24,21 @@ services:
     volumes:
       - ../application/initial.sql:/docker-entrypoint-initdb.d/initial.sql
     container_name: mysql
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=${PMA_ARBITRARY}
+      - PMA_HOST=${PMA_HOST}
+      - PMA_USER=${PMA_USER}
+      - PMA_PASSWORD=${PMA_PASSWORD}
+    links:
+      - mysql
+    ports:
+      - 8080:80
+    volumes:
+      - ./misc/phpmyadmin/sessions:/sessions
+    container_name: phpmyadmin
 
   nginx:
     build: ./nginx

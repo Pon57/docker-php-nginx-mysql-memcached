@@ -3,3 +3,9 @@ docker/misc/data
 
 # PHPStorm
 .idea
+
+# 環境設定ファイル
+.env
+
+# phpmyadminのセッションディレクトリ
+docker/misc/phpmyadmin/sessions/
