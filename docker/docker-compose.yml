@@ -57,7 +57,7 @@ services:
     #    build: ./php-fpm71
     #    build: ./php-fpm56    # <- if you want to use PHP5.6
     volumes:
-      - ../:/var/www/html
+      - ../public:/var/www/html
     links:
       - mysql
     environment:
