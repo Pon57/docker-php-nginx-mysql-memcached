@@ -9,6 +9,8 @@ services:
     image: busybox
     volumes:
       - ./misc/data:/var/lib/mysql
+      - ./misc/phpmyadmin/sessions:/sessions
+      - ../public:/var/www/html
 
   mysql:
     image: mysql:5.7
@@ -45,8 +47,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    volumes:
-      - ../public:/var/www/html
+    volumes_from:
+      - data
     links:
       - web
     container_name: nginx
@@ -56,8 +58,8 @@ services:
     #    build: ./php-fpm72   # <- if you want to use PHP7.2
     #    build: ./php-fpm71
     #    build: ./php-fpm56    # <- if you want to use PHP5.6
-    volumes:
-      - ../public:/var/www/html
+    volumes_from:
+      - data
     links:
       - mysql
     environment:
@@ -66,3 +68,11 @@ services:
       DATABASE_USER: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     container_name: web
+
+  composer:
+    build: ./composer
+    volumes_from:
+      - data
+    links:
+      - mysql
+    container_name: composer
