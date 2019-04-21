@@ -2,7 +2,7 @@ FROM php:fpm
 
 RUN apt-get update \
     && apt-get install -y zlib1g-dev libzip-dev \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip pdo_mysql
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
