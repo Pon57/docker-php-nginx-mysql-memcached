@@ -1,4 +1,4 @@
-FROM php:7.3.0-fpm
+FROM php:7.3.4-fpm
 
 ADD php.ini /usr/local/etc/php/conf.d/php.ini
 

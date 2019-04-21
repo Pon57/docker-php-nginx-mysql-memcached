@@ -12,3 +12,5 @@ docker/misc/phpmyadmin/sessions/
 
 # ドキュメントルートのディレクトリ
 public/
+
+.DS_Store
