@@ -1,0 +1,18 @@
+version: '2'
+
+syncs:
+  www-volume:
+    src: '../public'
+    sync_excludes: ['.DS_Store']
+    #sync_user: 'www-data'
+    #sync_userid: '1000'
+    #sync_group: 'www-data'
+    #sync_groupid: '82'
+    
+  phpmyadmin-volume:
+    src: './misc/phpmyadmin/sessions'
+    sync_excludes: ['.DS_Store']
+  
+  mysql-volume:
+    src: './misc/data'
+    sync_excludes: ['.DS_Store']

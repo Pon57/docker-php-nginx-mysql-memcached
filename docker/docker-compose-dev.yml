@@ -1,0 +1,16 @@
+version: '2'
+
+volumes:
+  www-volume:
+    external: true
+  phpmyadmin-volume:
+    external: true
+  mysql-volume:
+    external: true
+
+services:
+  data:
+    volumes:
+      - mysql-volume:/var/lib/mysql
+      - phpmyadmin-volume:/sessions
+      - www-volume:/var/www/html
