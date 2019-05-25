@@ -1,18 +1,37 @@
 version: '2'
 
+sync_default: &sync_default
+  notify_terminal: true
+
+  # IPの設定
+  # sync_host_ip: '127.0.0.1'
+
+  # ポートの設定
+  # sync_host_port: 10871
+
+  # 同期させないファイルまたはディレクトリ
+  sync_excludes: ['.DS_Store', '.gitignore', '.git/', '.idea/']
+     
+  # 同期方法の選択する (`rsync`か`unison`か`native_osx`を使えます)
+  sync_strategy: 'unison'
+     
+  # sync_userid: '1000'
+     
+  # fswatchで監視させないファイルまたはディレクトリ
+  watch_excludes: ['.gitignore', '.git/', '.idea/', 'vendor/', 'node_modules/', 'storage/']
+     
+  watch_args: '-v'
+  watch_strategy: 'fswatch'
+
 syncs:
   www-volume:
+    <<: *sync_default
     src: '../public'
-    sync_excludes: ['.DS_Store']
-    #sync_user: 'www-data'
-    #sync_userid: '1000'
-    #sync_group: 'www-data'
-    #sync_groupid: '82'
     
   phpmyadmin-volume:
+    <<: *sync_default
     src: './misc/phpmyadmin/sessions'
-    sync_excludes: ['.DS_Store']
   
   mysql-volume:
+    <<: *sync_default
     src: './misc/data'
-    sync_excludes: ['.DS_Store']

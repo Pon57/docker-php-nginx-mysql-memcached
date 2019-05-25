@@ -14,3 +14,5 @@ docker/misc/phpmyadmin/sessions/
 public/
 
 .DS_Store
+
+docker/\.docker-sync/
