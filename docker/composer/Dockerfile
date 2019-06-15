@@ -1,16 +1,13 @@
 FROM php:fpm
 
 RUN apt-get update \
-    && apt-get install -y zlib1g-dev libzip-dev unzip \
-    && docker-php-ext-install zip pdo_mysql
+    && apt-get install -y zlib1g-dev libzip-dev unzip git \
+    && docker-php-ext-install zip pdo_mysql \
+    && rm -rf /var/lib/apt/lists/*
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
-
-# install git
-RUN apt-get update \
-  && apt-get install -y git
 
 # If you want to install global command
 # For example
