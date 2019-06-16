@@ -1,7 +1,7 @@
 version: '2'
 services:
   memcached:
-    image: memcached
+    image: memcached:alpine
     ports:
       - "11212:11211"
 
@@ -28,7 +28,7 @@ services:
     container_name: mysql
   
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:fpm-alpine
     environment:
       - PMA_ARBITRARY=${PMA_ARBITRARY}
       - PMA_HOST=${PMA_HOST}
