@@ -28,7 +28,7 @@ services:
     container_name: mysql
   
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:fpm-alpine
+    image: phpmyadmin/phpmyadmin
     environment:
       - PMA_ARBITRARY=${PMA_ARBITRARY}
       - PMA_HOST=${PMA_HOST}
